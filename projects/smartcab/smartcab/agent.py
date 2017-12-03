@@ -3,6 +3,7 @@ import math
 from environment import Agent, Environment
 from planner import RoutePlanner
 from simulator import Simulator
+from datetime import datetime
 
 class LearningAgent(Agent):
     """ An agent that learns to drive in the Smartcab world.
@@ -101,7 +102,12 @@ class LearningAgent(Agent):
         # Set the agent state and default action
         self.state = state
         self.next_waypoint = self.planner.next_waypoint()
-        action = None
+        #action = None
+        #CASE 1, Not Learning,self.learning = false
+        # valid_actions will give the set of valid actions
+        random.seed(datetime.now())
+        index = random.randint(0, 3)
+        action = self.valid_actions[index]
 
         ########### 
         ## TO DO ##
