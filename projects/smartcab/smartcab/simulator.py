@@ -34,6 +34,7 @@ class Simulator(object):
         'gray'    : (155, 155, 155)
     }
 
+    # optimized=True, for telling tehe agent we r performing Q learning implementation 
     def __init__(self, env, size=None, update_delay=0.01, display=False, log_metrics=True, optimized=True):
         self.env = env
         self.size = size if size is not None else ((self.env.grid_size[0] + 1) * self.env.block_size, (self.env.grid_size[1] + 2) * self.env.block_size)
