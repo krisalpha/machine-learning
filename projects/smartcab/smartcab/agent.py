@@ -10,7 +10,7 @@ class LearningAgent(Agent):
     """ An agent that learns to drive in the Smartcab world.
         This is the object you will be modifying. """ 
 
-    def __init__(self, env, learning=True, epsilon=0.87, alpha=0.5):
+    def __init__(self, env, learning=True, epsilon=1.00, alpha=0.02):
         super(LearningAgent, self).__init__(env)     # Set the agent in the evironment 
         self.planner = RoutePlanner(self.env, self)  # Create a route planner
         self.valid_actions = self.env.valid_actions  # The set of valid actions
@@ -80,11 +80,11 @@ class LearningAgent(Agent):
         else:
             # implemented linear decay function
             # with this safety improved to C , reliability decreased to F
-            self.epsilon -= 0.01
+            #self.epsilon -= 0.01
 
             # implementing exponential decay
             # normal exponential function is decaying fast, need slow down decay of exponential function
-            #self.epsilon = math.exp(-self.alpha*self.t)
+            self.epsilon = math.exp(-self.alpha*self.t)
             
             # implementing a cos decay function 
             # using cos decay funcion, reliability improved to B, but safety remained at F
