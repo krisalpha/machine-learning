@@ -10,7 +10,7 @@ class LearningAgent(Agent):
     """ An agent that learns to drive in the Smartcab world.
         This is the object you will be modifying. """ 
 
-    def __init__(self, env, learning=True, epsilon=1.00, alpha=0.02):
+    def __init__(self, env, learning=True, epsilon=1.00, alpha=0.002):
         super(LearningAgent, self).__init__(env)     # Set the agent in the evironment 
         self.planner = RoutePlanner(self.env, self)  # Create a route planner
         self.valid_actions = self.env.valid_actions  # The set of valid actions
@@ -90,7 +90,7 @@ class LearningAgent(Agent):
             # using cos decay funcion, reliability improved to B, but safety remained at F
             #self.epsilon = math.cos(self.alpha*self.t)
             self.t += 1
-
+            print "TRIAL NUMBER IS ===== ==>>>>>>>>>. " , self.t
         return None
 
     def build_state(self):
