@@ -79,13 +79,16 @@ class LearningAgent(Agent):
             alpha = 0
         else:
             # implemented linear decay function
+            # with this safety improved to C , reliability decreased to F
+            self.epsilon -= 0.01
 
             # implementing exponential decay
+            # normal exponential function is decaying fast, need slow down decay of exponential function
             #self.epsilon = math.exp(-self.alpha*self.t)
             
             # implementing a cos decay function 
             # using cos decay funcion, reliability improved to B, but safety remained at F
-            self.epsilon = math.cos(self.alpha*self.t)
+            #self.epsilon = math.cos(self.alpha*self.t)
             self.t += 1
 
         return None
